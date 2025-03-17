@@ -4,7 +4,6 @@ from count_min_sketch import CountMinSketch
 from benchmark import benchmark_cms_vs_dict
 import random
 import pandas as pd
-import sys
 
 # ----- Spotify Implementation -----
 # load songs
