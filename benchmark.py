@@ -4,12 +4,17 @@ import pandas as pd
 from count_min_sketch import CountMinSketch
 
 def benchmark_cms_vs_dict(n):
+    # dictionary to store memory usage of CMS and dictionary for each value of n, where n is the number of data points we want to store
     memory_usage = {"n": [], "CMS (bytes)": [], "Dictionary (bytes)": []}
+
+    # initialize CMS
+    cms_benchmark = CountMinSketch(p=2**31 - 1, error_rate=0.001, failure_probability=0.001)
 
     print("Benchmarking CMS against dictionary")
     for i in n:
-        cms_benchmark = CountMinSketch(p=2**31 - 1, error_rate=0.001, failure_probability=0.001)
+        # dictionary to store the frequency of each item
         dict_benchmark = {}
+        # update CMS and dictionary with random values
         for j in range(i+1):
             frequency = random.randint(1, 10)
             for _ in range(frequency):
